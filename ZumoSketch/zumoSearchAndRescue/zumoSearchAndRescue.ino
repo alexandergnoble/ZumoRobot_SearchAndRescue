@@ -1,15 +1,21 @@
 #include <Zumo32U4.h>
+#include <Wire.h>
 
 // Zumo32U4ButtonA buttonA;
 // Documentation for the motors class:
 // http://pololu.github.io/zumo-32u4-arduino-library/class_zumo32_u4_motors.html
 Zumo32U4Motors motors;
+Zumo32U4LineSensors lineSensors;
+Zumo32U4ProximitySensors proxSensors;
+
+uint16_t lineSensorValues[5] = { 0, 0, 0, 0, 0 };
 
 const uint16_t motorSpeed = 200;
 
 void setup() {
   Serial1.begin(9600);
   Serial.begin(9600);
+  uint8_t lineSensorPins[] = { SENSOR_DOWN1, SENSOR_DOWN2, SENSOR_DOWN3, SENSOR_DOWN4, SENSOR_DOWN5 };
 }
 
 void loop() {
