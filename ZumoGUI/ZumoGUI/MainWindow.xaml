@@ -1,0 +1,18 @@
+﻿<Window x:Class="ZumoGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZumoGUI"
+        mc:Ignorable="d"
+        Title="Zumo Controls" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnW" Content="W" HorizontalAlignment="Left" Height="84" Margin="350,48,0,0" VerticalAlignment="Top" Width="84" Click="btnW_Click"/>
+        <Button x:Name="btnA" Content="A" HorizontalAlignment="Left" Height="84" Margin="228,149,0,0" VerticalAlignment="Top" Width="84" Click="btnA_Click"/>
+        <Button x:Name="btnS" Content="S" HorizontalAlignment="Left" Height="84" Margin="350,149,0,0" VerticalAlignment="Top" Width="84" Click="btnS_Click"/>
+        <Button x:Name="btnD" Content="D" HorizontalAlignment="Left" Height="84" Margin="465,149,0,0" VerticalAlignment="Top" Width="84" Click="btnD_Click"/>
+        <TextBox x:Name="output" HorizontalAlignment="Left" Height="27" Margin="292,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" TextChanged="output_TextChanged"/>
+        <Label Content="Focus to use WASD type controls" HorizontalAlignment="Left" Height="28" Margin="301,253,0,0" VerticalAlignment="Top" Width="192"/>
+
+    </Grid>
+</Window>
