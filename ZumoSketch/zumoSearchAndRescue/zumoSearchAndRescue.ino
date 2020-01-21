@@ -1,21 +1,24 @@
-#include <Zumo32U4.h>
 #include <Wire.h>
+#include <Zumo32U4.h>
 
 // Zumo32U4ButtonA buttonA;
 // Documentation for the motors class:
 // http://pololu.github.io/zumo-32u4-arduino-library/class_zumo32_u4_motors.html
 Zumo32U4Motors motors;
 Zumo32U4LineSensors lineSensors;
-Zumo32U4ProximitySensors proxSensors;
 
-uint16_t lineSensorValues[5] = { 0, 0, 0, 0, 0 };
+#define LED 13
+#define QTR_THRESHOLD  700
+#define NUM_SENSORS 3
 
-const uint16_t motorSpeed = 200;
+#define MOTOR_SPEED 100
+bool onOff = true;
+unsigned int lineSensorValues[NUM_SENSORS];
 
 void setup() {
   Serial1.begin(9600);
   Serial.begin(9600);
-  uint8_t lineSensorPins[] = { SENSOR_DOWN1, SENSOR_DOWN2, SENSOR_DOWN3, SENSOR_DOWN4, SENSOR_DOWN5 };
+  lineSensors.initThreeSensors();
 }
 
 void loop() {
@@ -29,38 +32,85 @@ void loop() {
     String name ="";
 
     switch (direction){
-      case'w': case 'W':
+      case'w': case 'W':{
       name = "Forward";
-      motors.setSpeeds(motorSpeed, motorSpeed);
+      motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
       delay(250);
-      motors.setSpeeds(0, 0);
-      break;
-      
-      case'a': case 'A':
-      name = "Left";
-      motors.setSpeeds(-motorSpeed, motorSpeed);
-      delay(115);
-      motors.setSpeeds(0, 0);
-      break;
-      
-      case'd': case 'D':
-      name = "Right";
-      motors.setSpeeds(motorSpeed, -motorSpeed);
-      delay(115);
-      motors.setSpeeds(0, 0);
-      break;
-      
-      case's': case 'S':
-      name = "Backwards";
-      motors.setSpeeds(-motorSpeed, -motorSpeed);
-      delay(250);
-      motors.setSpeeds(0, 0);
-      break;
-
-      case'z': case 'Z':
-      name = "Stop";
       motors.setSpeeds(0, 0);
       break;
     }
+      
+      case'a': case 'A': {
+      name = "Left";
+      motors.setSpeeds(-MOTOR_SPEED, MOTOR_SPEED);
+      delay(115);
+      motors.setSpeeds(0, 0);
+      break;
+      }
+      
+      case'd': case 'D': {
+      name = "Right";
+      motors.setSpeeds(MOTOR_SPEED, -MOTOR_SPEED);
+      delay(115);
+      motors.setSpeeds(0, 0);
+      break;
+      }
+      
+      case's': case 'S': {
+      name = "Backwards";
+      motors.setSpeeds(-MOTOR_SPEED, -MOTOR_SPEED);
+      delay(250);
+      motors.setSpeeds(0, 0);
+      break;
+      }
+
+      case'z': case 'Z': {
+      name = "Stop";
+      motors.setSpeeds(0, 0);
+      break;
+      }
+
+      case 'c': case 'C': {
+      name= "Auto forward";
+      autoForward();
+      }
+
+    }
  }
+}
+
+void autoForward()
+{
+  int i = 6;
+
+  while (i = 6){
+    
+  lineSensors.read(lineSensorValues);
+
+      if (lineSensorValues[0] > QTR_THRESHOLD)
+      {
+        // If leftmost sensor detects line, reverse and turn to the
+        // right.
+        motors.setSpeeds(-MOTOR_SPEED, -MOTOR_SPEED);
+        delay(200);
+        motors.setSpeeds(MOTOR_SPEED, -MOTOR_SPEED);
+        delay(300);
+        motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
+      }
+      else if (lineSensorValues[NUM_SENSORS - 1] > QTR_THRESHOLD)
+      {
+        // If rightmost sensor detects line, reverse and turn to the
+        // left.
+        motors.setSpeeds(-MOTOR_SPEED, -MOTOR_SPEED);
+        delay(200);
+        motors.setSpeeds(-MOTOR_SPEED, MOTOR_SPEED);
+        delay(300);
+        motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
+      }
+      else
+      {
+        // Otherwise, go straight.
+        motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
+      }
+  }
 }

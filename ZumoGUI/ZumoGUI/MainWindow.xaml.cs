@@ -90,6 +90,13 @@ namespace ZumoGUI
                 mySerialPort.Close();
                 output.Text = String.Empty;
                 break;
+
+                case "c": case "C":
+                mySerialPort.Open();
+                mySerialPort.Write("C");
+                mySerialPort.Close();
+                output.Text = String.Empty;
+                break;
             }         
         }
     }
