@@ -12,3 +12,17 @@ C:\Users\Alexa\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\D
 C:\Users\Alexa\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI.csproj.GenerateResource.cache
 C:\Users\Alexa\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI.exe
 C:\Users\Alexa\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI.pdb
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\bin\Debug\ZumoGUI.exe.config
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\bin\Debug\ZumoGUI.exe
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\bin\Debug\ZumoGUI.pdb
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI.csprojAssemblyReference.cache
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\MainWindow.g.cs
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\App.g.cs
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI_MarkupCompile.cache
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI_MarkupCompile.lref
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\MainWindow.baml
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI.g.resources
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI.Properties.Resources.resources
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI.csproj.GenerateResource.cache
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI.exe
+C:\Users\Alexander\Documents\Website\ZumoRobot_SearchAndRescue\ZumoGUI\ZumoGUI\obj\Debug\ZumoGUI.pdb

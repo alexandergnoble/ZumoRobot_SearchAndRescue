@@ -13,6 +13,7 @@
         <Button x:Name="btnD" Content="D" HorizontalAlignment="Left" Height="84" Margin="465,149,0,0" VerticalAlignment="Top" Width="84" Click="btnD_Click"/>
         <TextBox x:Name="output" HorizontalAlignment="Left" Height="27" Margin="292,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" TextChanged="output_TextChanged"/>
         <Label Content="Focus to use WASD type controls" HorizontalAlignment="Left" Height="28" Margin="301,253,0,0" VerticalAlignment="Top" Width="192"/>
+        <TextBlock x:Name="txtBlock" HorizontalAlignment="Left" Height="38" Margin="247,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Opacity="0.5"/>
 
     </Grid>
 </Window>

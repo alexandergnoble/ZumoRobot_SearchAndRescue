@@ -61,6 +61,7 @@ namespace ZumoGUI
         {
             string test = output.Text;
 
+
             switch (test)
             {
                 case "w": case "W":
