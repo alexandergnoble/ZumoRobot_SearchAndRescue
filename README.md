@@ -68,4 +68,4 @@ The tasks as listed in the [assignment brief](https://github.com/alexandernoble/
 
 ## Acknowledgements & Sources
 
-The .ino script utilises libraries and sections of example scripts provided by Pololu. Libraries used include; <wire.h> & <Zumo32U4.h>. Example scripts include; Zumo32U4 > BorderDetect, Zumo32U4 > LineAndProximitySensors, Zumo32U4 > SumoColission. https://www.pololu.com/
+The .ino script utilises libraries and sections of example scripts provided by Pololu. Libraries used include; <wire.h> & <Zumo32U4.h>. Example scripts include; Zumo32U4 > BorderDetect, Zumo32U4 > LineAndProximitySensors, Zumo32U4 > SumoColission, Zumo32U4 > FaceTowardsOpponent. https://www.pololu.com/
