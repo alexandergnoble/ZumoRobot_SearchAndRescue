@@ -40,6 +40,7 @@ void loop() {
     switch (direction){ /* Creating a switch case from reading the GUI inputs */
       case'w': case 'W':{ /* If W is entered from the GUI/Serial, go forward */
       name = "Forward";
+      Serial1.print("Forward"); /* Outputs to the GUI */
       motors.setSpeeds(100, 100);
       delay(200);
       motors.setSpeeds(0, 0);

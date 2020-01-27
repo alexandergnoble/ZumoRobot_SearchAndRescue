@@ -32,7 +32,7 @@
         <Button x:Name="btnDetector" Content="Object Detector" HorizontalAlignment="Left" Height="68" Margin="551,90,0,0" VerticalAlignment="Top" Width="105" Grid.ColumnSpan="2" Click="btnDetector_Click"/>
         <Button x:Name="btnL" Content="L 90°" HorizontalAlignment="Left" Height="40" Margin="563,266,0,0" VerticalAlignment="Top" Width="38" Click="btnL_Click"/>
         <Button x:Name="btnR" Content="R 90°" HorizontalAlignment="Left" Height="40" Margin="85,266,0,0" VerticalAlignment="Top" Width="38" Click="btnR_Click" Grid.Column="1"/>
-        <TextBox x:Name="txtOutput" HorizontalAlignment="Left" Height="283" Margin="27,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="393" BorderBrush="Black"/>
+        <TextBox x:Name="txtOutput" HorizontalAlignment="Left" Height="283" Margin="27,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="393" BorderBrush="Black" HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto"/>
         <TextBlock x:Name="lblOutput" HorizontalAlignment="Left" Height="41" Margin="27,87,0,0" TextWrapping="Wrap" Text="Zumo output:" VerticalAlignment="Top" Width="346" FontSize="22" FontFamily="Consolas"/>
         <Label x:Name="lblControlTitle" Content="Controls" HorizontalAlignment="Left" Margin="456,128,0,0" VerticalAlignment="Top" Height="30" Width="58" FontWeight="Bold"/>
         <Label x:Name="lblControls" Content="W - Forward&#xD;&#xA;A - Left&#xD;&#xA;S - Reverse&#xD;&#xA;D - Right&#xD;&#xA;L - 90° Left&#xD;&#xA;R - 90° Right&#xD;&#xA;B - 180° Turn&#xD;&#xA;C - Manual Corridor&#xD;&#xA;X - Auto Corridor&#xD;&#xA;Z - Room Search" HorizontalAlignment="Left" Height="222" Margin="430,145,0,0" VerticalAlignment="Top" Width="121"/>
