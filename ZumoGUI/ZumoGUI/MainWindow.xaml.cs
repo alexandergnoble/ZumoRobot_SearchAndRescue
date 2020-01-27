@@ -144,7 +144,7 @@ namespace ZumoGUI
 
                 case "l": case "L": //If input = L
                     mySerialPort.Open();
-                mySerialPort.Write("L") // Open the serial port, type L and close the port;
+                    mySerialPort.Write("L"); // Open the serial port, type L and close the port;
                 mySerialPort.Close();
                 txtInput.Text = String.Empty;
                 break;

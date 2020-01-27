@@ -30,8 +30,8 @@
         <TextBlock x:Name="lblTitle" HorizontalAlignment="Left" Margin="172,10,0,0" TextWrapping="Wrap" Text="Zumo Search &amp; Rescue" VerticalAlignment="Top" Height="54" Width="466" FontSize="36" FontFamily="Arial Black" Grid.ColumnSpan="2"/>
         <Button x:Name="btnManualCorridor" Content="Manual Corridor Scaler" HorizontalAlignment="Left" Height="30" Margin="48,128,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1" Click="btnManualCorridor_Click" FontSize="9"/>
         <Button x:Name="btnDetector" Content="Object Detector" HorizontalAlignment="Left" Height="68" Margin="551,90,0,0" VerticalAlignment="Top" Width="105" Grid.ColumnSpan="2" Click="btnDetector_Click"/>
-        <Button x:Name="btnL" Content="L 90°" HorizontalAlignment="Left" Height="40" Margin="563,266,0,0" VerticalAlignment="Top" Width="38" Click="btnW_Click"/>
-        <Button x:Name="btnR" Content="R 90°" HorizontalAlignment="Left" Height="40" Margin="85,266,0,0" VerticalAlignment="Top" Width="38" Click="btnW_Click" Grid.Column="1"/>
+        <Button x:Name="btnL" Content="L 90°" HorizontalAlignment="Left" Height="40" Margin="563,266,0,0" VerticalAlignment="Top" Width="38" Click="btnL_Click"/>
+        <Button x:Name="btnR" Content="R 90°" HorizontalAlignment="Left" Height="40" Margin="85,266,0,0" VerticalAlignment="Top" Width="38" Click="btnR_Click" Grid.Column="1"/>
         <TextBox x:Name="txtOutput" HorizontalAlignment="Left" Height="283" Margin="27,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="393" BorderBrush="Black"/>
         <TextBlock x:Name="lblOutput" HorizontalAlignment="Left" Height="41" Margin="27,87,0,0" TextWrapping="Wrap" Text="Zumo output:" VerticalAlignment="Top" Width="346" FontSize="22" FontFamily="Consolas"/>
         <Label x:Name="lblControlTitle" Content="Controls" HorizontalAlignment="Left" Margin="456,128,0,0" VerticalAlignment="Top" Height="30" Width="58" FontWeight="Bold"/>
@@ -49,9 +49,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnL_Copy" Content="L 90°" HorizontalAlignment="Left" Height="40" Margin="551,266,0,0" VerticalAlignment="Top" Width="50" Click="btnW_Click"/>
-        <Button x:Name="btnR_Copy" Content="R 90°" HorizontalAlignment="Left" Height="40" Margin="85,266,0,0" VerticalAlignment="Top" Width="52" Click="btnW_Click" Grid.Column="1"/>
-        <Button x:Name="btnB" Content="B 180°" HorizontalAlignment="Left" Height="40" Margin="13,376,0,0" VerticalAlignment="Top" Width="50" Click="btnW_Click" Grid.Column="1"/>
+        <Button x:Name="btnB" Content="B 180°" HorizontalAlignment="Left" Height="40" Margin="13,376,0,0" VerticalAlignment="Top" Width="50" Click="btnB_Click" Grid.Column="1"/>
         <Button x:Name="btnAutoCorridor" Content="Auto Corridor Scaler" HorizontalAlignment="Left" Height="30" Margin="48,90,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1" Click="btnAutoCorridor_Click" FontSize="9"/>
 
     </Grid>
