@@ -1,23 +1,19 @@
 #include <Wire.h>
 #include <Zumo32U4.h>
 
-// Zumo32U4ButtonA buttonA;
-// Documentation for the motors class:
-// http://pololu.github.io/zumo-32u4-arduino-library/class_zumo32_u4_motors.html
 Zumo32U4Motors motors;
 Zumo32U4LineSensors lineSensors;
 
-#define LED 13
-#define QTR_THRESHOLD  700
-#define NUM_SENSORS 3
+#define QTR_THRESHOLD  700 /* Line detection threshold, edit to change the sensitivity */
+#define NUM_SENSORS 3      /* Defining the number of front sensors we require, with 0 being the left most, 1 being the center and 2 being the right most */
 
-#define MOTOR_SPEED 100
-bool onOff = true;
-unsigned int lineSensorValues[NUM_SENSORS];
+#define MOTOR_SPEED 100    /* Defining a set speed for a variable - used for the motors */
 
-void setup() {
-  Serial1.begin(9600);
-  lineSensors.initThreeSensors();
+unsigned int lineSensorValues[NUM_SENSORS]; /* Defining an array of 3 for our line sensor values */
+
+void setup() { /* Run everytime at the beginning of the robots power on */
+  Serial1.begin(9600); /* Begin a serial connection using the XBEE attached to the robot */
+  lineSensors.initThreeSensors(); /* Initiating the three line sensors on the robot */
 }
 
 void loop() {
@@ -25,13 +21,11 @@ void loop() {
 
   while (Serial1.available()>0) {
     
-    int direction = Serial1.read();
-    Serial1.print("Got message: ");
-    Serial1.println(direction);
+    int direction = Serial1.read(); /* Read the serials input (from the GUI) and assign it to the integer direction */
     String name ="";
 
-    switch (direction){
-      case'w': case 'W':{
+    switch (direction){ /* Creating a switch case from reading the GUI inputs */
+      case'w': case 'W':{ /* If W is entered from the GUI/Serial, go forward */
       name = "Forward";
       motors.setSpeeds(100, 100);
       delay(200);
@@ -39,7 +33,7 @@ void loop() {
       return;
     }
       
-      case'a': case 'A': {
+      case'a': case 'A': { /* If A is entered from the GUI/Serial, turn left */
       name = "Left";
       motors.setSpeeds(-150, 150);
       delay(100);
@@ -47,7 +41,7 @@ void loop() {
       return;
       }
       
-      case'd': case 'D': {
+      case'd': case 'D': { /* If D is entered from the GUI/Serial, go right */
       name = "Right";
       motors.setSpeeds(150, -150);
       delay(100);
@@ -55,7 +49,7 @@ void loop() {
       return;
       }
       
-      case's': case 'S': {
+      case's': case 'S': { /* If S is entered from the GUI/Serial, go backwards */
       name = "Backwards";
       motors.setSpeeds(-100, -100);
       delay(200);
@@ -63,128 +57,152 @@ void loop() {
       return;
       }
 
-      case'z': case 'Z': {
-      name = "Stop";
+      case'z': case 'Z': { /* If Z is entered from the GUI/Serial, trigger the object detection function */
+      name = "Object Detector";
+      // OBJ FUNCTION HERE
+      return;
+      }
+
+      case 'c': case 'C': { /* If C is entered from the GUI/Serial, trigger the manual corridor scaler function */
+      name= "Manual Corridor Scaler";
+      manualCorridor(); /* Calls the manual corridor scaler function from below */
+      return;
+      }
+
+      case 'x': case 'X': { /* If C is entered from the GUI/Serial, trigger the automatic corridor scaler function */
+      name= "Auto Corridor Scaler";
+      // Auto Corridor Scaler function
+      return;
+      }
+
+      case 'l': case 'L': { /* If L is entered from the GUI/Serial, turn left 90 degrees */
+      name= "90 degree left";
+      motors.setSpeeds(-200, 200);
+      delay(330);
       motors.setSpeeds(0, 0);
       return;
       }
 
-      case 'c': case 'C': {
-      name= "Auto forward";
-      autoForward();
-      break;
+      case 'r': case 'R': { /* If R is entered from the GUI/Serial, turn right 90 degrees */
+      name= "90 degree right";
+      motors.setSpeeds(200, -200);
+      delay(330);
+      motors.setSpeeds(0, 0);
+      return;
+      }
+      
+      case 'b': case 'B': { /* If B is entered from the GUI/Serial, turn backwards 180 degrees */
+      name= "180 degree turn";
+      motors.setSpeeds(200, -200);
+      delay(660);
+      motors.setSpeeds(0, 0);
+      return;
       }
 
     }
  }
 }
-void manualTurn()
+void manualTurn() /* Function for task 3 */
 {
   String name ="";
-  Serial1.print("Press C to resume!");
+  Serial1.print("Press C to resume!"); /* Outputs to the GUI */
   
   while (Serial1.available()==0);
     
-      int direction = Serial1.read();
+      int direction = Serial1.read(); /* Read the GUI/Serial inputs and assign it to integer direction */
     
-      switch (direction){
+      switch (direction){ /* Switch case from integer direction */
               
-      case'a': case 'A': {
+      case'a': case 'A': { /* If A is inputted from the GUI/Serial */
       name = "Left";
-      motors.setSpeeds(-200, 200);
+      motors.setSpeeds(-200, 200); /* Speeds and delay set to a 90 degree turn angle */
       delay(330);
       motors.setSpeeds(0, 0);
       break;
       }
       
-      case'd': case 'D': {
+      case'd': case 'D': { /* If D is inputted from the GUI/Serial */
       name = "Right";
-      motors.setSpeeds(200, -200);
+      motors.setSpeeds(200, -200); /* Speeds and delay set to a 90 degree turn angle */
       delay(330);
       motors.setSpeeds(0, 0);
       break;
       }
       
-      case's': case 'S': {
+      case'b': case 'B': { /* If B is inputted from the GUI/Serial */
       name = "180";
-      motors.setSpeeds(200, -200);
+      motors.setSpeeds(200, -200); /* Speeds and delay set to a 180 degree turn angle */
       delay(660);
       motors.setSpeeds(0, 0);
       break;
       }
 
-      case'c': case 'C': {
+      case'c': case 'C': { /* If C is inputted from the GUI/Serial */
       name = "Resume";
-      Serial1.print("Resuming!");
+      Serial1.print("Resuming!"); /* Outputs to the GUI */ 
       return;
       }
-
-      case'z': case 'Z': {
-      name = "Exit";
-      Serial1.print("Exiting!");
       return;
-      }
       
    }
 }
-void autoForward()
+void manualCorridor() /* Function for task 3 */
 {
   int i = 6;
 
-  while (i = 6){
+  while (i = 6){ /* Creates a loop whilst i == 6 */
     
-lineSensors.read(lineSensorValues);
+      lineSensors.read(lineSensorValues); /* Read the current line sensor values and assign it to our array lineSensorValues  */
 
-      if (lineSensorValues[0] > QTR_THRESHOLD)
+      if (lineSensorValues[0] > QTR_THRESHOLD) /* If the line sensor value for the left sensor is higher than our threshold */
       {
-        // If leftmost sensor detects line, reverse and turn to the
-        // right.
-        motors.setSpeeds(40,40);
+        
+        motors.setSpeeds(40,40); /* Goes forward ever so slightly */
         delay(200);
-        lineSensors.read(lineSensorValues);
-        if (lineSensorValues[NUM_SENSORS - 1] > QTR_THRESHOLD && lineSensorValues[0] > QTR_THRESHOLD)
-        {
-          motors.setSpeeds(-30,-30);
-          delay(220);
-          motors.setSpeeds(0,0);
-          manualTurn();
-        }
-        else
-        {
-        motors.setSpeeds(-MOTOR_SPEED, -MOTOR_SPEED);
-        delay(200);
-        motors.setSpeeds(MOTOR_SPEED, -MOTOR_SPEED);
-        delay(80);
-        motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
-        }
+        lineSensors.read(lineSensorValues); /* Records the line sensor values again */
+        
+          if (lineSensorValues[NUM_SENSORS - 1] > QTR_THRESHOLD && lineSensorValues[0] > QTR_THRESHOLD) /* If both the left most sensor and the right most senser are above the threshold */
+          {
+            motors.setSpeeds(-30,-30); /* Reverse slightly and make a stop */
+            delay(220);
+            motors.setSpeeds(0,0);
+            manualTurn(); /* Calls the manualTurn function from above for task 3 */
+          }
+            else /* If both line sensors are not over the threshold, and only the leftmost is */
+            {
+            motors.setSpeeds(-MOTOR_SPEED, -MOTOR_SPEED); /* Reverse ever so slightly, make a right hand turn and start going forward again */
+            delay(200);
+            motors.setSpeeds(MOTOR_SPEED, -MOTOR_SPEED);
+            delay(80);
+            motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
+            }
       }
-      else if (lineSensorValues[NUM_SENSORS - 1] > QTR_THRESHOLD)
+      
+      else if (lineSensorValues[NUM_SENSORS - 1] > QTR_THRESHOLD) /* If the line sensor value for the slight right sensor is higher than our threshold */
       {
-        motors.setSpeeds(40,40);
+        motors.setSpeeds(40,40); /* Goes forward ever so slightly */
         delay(200);
-        lineSensors.read(lineSensorValues);
-        if (lineSensorValues[0] > QTR_THRESHOLD && lineSensorValues[NUM_SENSORS - 1] > QTR_THRESHOLD)
-        {
-          motors.setSpeeds(-30,-30);
-          delay(220);
-          motors.setSpeeds(0,0);
-          manualTurn();
-        }
-        else
-        {
-        // If rightmost sensor detects line, reverse and turn to the
-        // left.
-        motors.setSpeeds(-MOTOR_SPEED, -MOTOR_SPEED);
-        delay(200);
-        motors.setSpeeds(-MOTOR_SPEED, MOTOR_SPEED);
-        delay(80);
-        motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
-        }
+        lineSensors.read(lineSensorValues); /* Records the line sensor values again */
+          if (lineSensorValues[0] > QTR_THRESHOLD && lineSensorValues[NUM_SENSORS - 1] > QTR_THRESHOLD) /* If both the left most sensor and the right most senser are above the threshold */
+          {
+            motors.setSpeeds(-30,-30); /* Reverse slightly and make a stop */
+            delay(220);
+            motors.setSpeeds(0,0);
+            manualTurn(); /* Calls the manualTurn function from above for task 3 */
+          }
+            else /* If both line sensors are not over the threshold, and only the leftmost is */
+            {
+            motors.setSpeeds(-MOTOR_SPEED, -MOTOR_SPEED); /* Reverse ever so slightly, make a  slight left hand turn and start going forward again */
+            delay(200);
+            motors.setSpeeds(-MOTOR_SPEED, MOTOR_SPEED);
+            delay(80);
+            motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
+            }
       }
-      else
+      
+      else /* If neither linesensor is over the threshold */
       {
-        // Otherwise, go straight.
-        motors.setSpeeds(50, 50);
+        motors.setSpeeds(50, 50); /* Keep going straight */
       }
 
   }
