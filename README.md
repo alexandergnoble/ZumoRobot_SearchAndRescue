@@ -8,7 +8,7 @@ Programming "Things" - SHU University Assignment - Coursework 1
 2. GUI Overview - C# & WPF
 3. Function Overview
 4. Achievements, Videos & Key Issues
-5. Acknowledgements & Sourc#es
+5. Acknowledgements & Sources
 
 ## Introduction
 This assignment involved scripting a Pololozu Zumo 32u4 Robot to perform a search and rescue mission on a given 'maze'. The search and rescue mission involves the Zumo traversing the 'maze' both manually and automatically whilst also being commanded to 'scan' rooms for possible people inside.
