@@ -42,7 +42,7 @@ In order to traverse the corridors and perform the rescue mission, the robot has
 | Auto Corridor Scaler              | The robot will begin to move up the corridor automatically using line detectors to keep it within the boundaries. At the end of the corridor, the robot will stop and prompt the user for a command through the 'Zumo Output'. Using the 'TYPE CONTROLS' component, the user can enter 'L' for a left 90 degree turn, 'R' for a right 90 degree turn, or 'B' for a 180 degree turn. The robot will then make the respective turn and continue on down the corridor.                                                                          |
 | Object Detection              | This function will scan a room, either to the left or the right of the corridor, for objects/people that are in there. If an object/person is found, the robot will turn to it, buzz, and record the entry in the Zumo Output. The user needs to indicate whether the room is to the left or the right using the 'TYPE CONTROLS' component and typing either L or R depending on which side the room is needing to be searched. The robot will turn, move forward into the room, scan for objects/people, indicate to the user using the 'Zumo Output' if something was in there, and then quit out the function.         |                            
 
-## Achievements & Key Issues
+## Achievements, Videos & Key Issues
 **Achievements;**
 
 The tasks as listed in the [assignment brief](https://github.com/alexandernoble/ZumoRobot_SearchAndRescue/blob/master/Assignment%20Brief.pdf) have been achieved on a maze scenario at home;
