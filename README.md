@@ -1,6 +1,16 @@
 # Pololu Zumo Robot - Search and Rescue
+
 Programming "Things" - SHU University Assignment - Coursework 1
 
+## Table of contents
+
+1. Introduction
+2. GUI Overview - C# & WPF
+3. Function Overview
+4. Achievements, Videos & Key Issues
+5. Acknowledgements & Sourc#es
+
+## Introduction
 This assignment involved scripting a Pololozu Zumo 32u4 Robot to perform a search and rescue mission on a given 'maze'. The search and rescue mission involves the Zumo traversing the 'maze' both manually and automatically whilst also being commanded to 'scan' rooms for possible people inside.
 
 The scenario motivating this assignment is that your robot is trying to find/rescue people trapped on a single floor in a building which is filled with smoke. The robot moves through a corridor and people are to be discovered in rooms or in the corridor. When the robot discovers a 'person' it signals back to ‘base’ so that a search party can come in to rescue that person. The robot, however, continues to search, signalling as and when it finds people in other rooms. When the robot reaches the (final) end of the corridor, it turns around and returns to base (by the quickest route possible, but visiting all the locations where it has found people to confirm they have been rescued).
@@ -54,8 +64,6 @@ The tasks as listed in the [assignment brief](https://github.com/alexandernoble/
 | Task 3: Turning Corners              | Y - The robot will perform the same as task 2, but when it reaches the end of the corridor, it will stop and ask for the user to manually turn the robot using WASD controls. Once this movement has been done, the robot can be set off again by pressing 'C'. <p align="center"><a href="http://www.youtube.com/watch?feature=player_embedded&v=tnS09NupYqs" target="_blank"><img src="http://img.youtube.com/vi/tnS09NupYqs/0.jpg" alt="Zumo Robot in Maze" width="640" height="400" border="10" /></a></p>  |
 | Task 4: The Zumo turns autonomously around a corner             | Y - Using the same function from task 3, this has been achieved by differing the code to look for a 'L', 'R' or 'B' input from the user once it hits a wall. These inputs will allow the robot to make an automatic turn either 90 degrees left, 90 degrees right, or 180 degrees backwards.<p align="center"><a href="http://www.youtube.com/watch?feature=player_embedded&v=twhtN35gUCM" target="_blank"><img src="http://img.youtube.com/vi/twhtN35gUCM/0.jpg" alt="Zumo Robot in Maze" width="640" height="400" border="10" /></a></p> |
 | Task 5: The Zumo searches a room.              | Y - Using the same turning function from task 4, the robot will be told by the user that it is outside a room. The user then inputs an 'L' for left or 'R' for right, depending on which side the room is. Once a side has been chosen, the robot will move forward slightly and perform a sweeping scan of the room. If an object is found, the robot will turn towards it and buzz, along with notifying the user via. an output to the GUI. <p align="center"><a href="http://www.youtube.com/watch?feature=player_embedded&v=Uc09Zevj9fk" target="_blank"><img src="http://img.youtube.com/vi/Uc09Zevj9fk/0.jpg" alt="Zumo Robot in Maze" width="640" height="400" border="10" /></a></p> |
-| Task 6: The T-junction               | N        |
-| Task 7: The return journey            | N        |
 
 **Key issues;**
 
