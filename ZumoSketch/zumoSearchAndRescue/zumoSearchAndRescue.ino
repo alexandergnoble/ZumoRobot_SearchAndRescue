@@ -40,7 +40,7 @@ void loop() {
     switch (direction){ /* Creating a switch case from reading the GUI inputs */
       case'w': case 'W':{ /* If W is entered from the GUI/Serial, go forward */
       name = "Forward";
-      Serial1.print("Forward"); /* Outputs to the GUI */
+      Serial1.println("Forward \n"); /* Outputs to the GUI */
       motors.setSpeeds(100, 100);
       delay(200);
       motors.setSpeeds(0, 0);
@@ -49,6 +49,7 @@ void loop() {
       
       case'a': case 'A': { /* If A is entered from the GUI/Serial, turn left */
       name = "Left";
+      Serial1.println("Left turn \n"); /* Outputs to the GUI */
       motors.setSpeeds(-150, 150);
       delay(100);
       motors.setSpeeds(0, 0);
@@ -57,6 +58,7 @@ void loop() {
       
       case'd': case 'D': { /* If D is entered from the GUI/Serial, go right */
       name = "Right";
+      Serial1.println("Right turn \n"); /* Outputs to the GUI */
       motors.setSpeeds(150, -150);
       delay(100);
       motors.setSpeeds(0, 0);
@@ -65,6 +67,7 @@ void loop() {
       
       case's': case 'S': { /* If S is entered from the GUI/Serial, go backwards */
       name = "Backwards";
+      Serial1.println("Backwards \n"); /* Outputs to the GUI */
       motors.setSpeeds(-100, -100);
       delay(200);
       motors.setSpeeds(0, 0);
@@ -73,24 +76,28 @@ void loop() {
 
       case'z': case 'Z': { /* If Z is entered from the GUI/Serial, trigger the object detection function */
       name = "Object Detector";
+      Serial1.println("Room search: Press L or R (Left or right) to indicate which side the room is on. \n"); /* Outputs to the GUI */
       roomDirection();
       return;
       }
 
       case 'c': case 'C': { /* If C is entered from the GUI/Serial, trigger the manual corridor scaler function */
       name= "Manual Corridor Scaler";
+      Serial1.println("Manual corridor scaling: Press C to resume at the end of a corridor. \n"); /* Outputs to the GUI */
       manualCorridor(); /* Calls the manual corridor scaler function from below */
       return;
       }
 
       case 'x': case 'X': { /* If C is entered from the GUI/Serial, trigger the automatic corridor scaler function */
       name= "Auto Corridor Scaler";
+      Serial1.println("Auto corridor scaling: Press L or R (left or right turn) to resume at the end of a corridor. \n"); /* Outputs to the GUI */
       autoCorridor();
       return;
       }
 
       case 'l': case 'L': { /* If L is entered from the GUI/Serial, turn left 90 degrees */
       name= "90 degree left";
+      Serial1.println("Left 90 degrees \n"); /* Outputs to the GUI */
       motors.setSpeeds(-200, 200);
       delay(330);
       motors.setSpeeds(0, 0);
@@ -99,6 +106,7 @@ void loop() {
 
       case 'r': case 'R': { /* If R is entered from the GUI/Serial, turn right 90 degrees */
       name= "90 degree right";
+      Serial1.println("Right 90 degrees \n"); /* Outputs to the GUI */
       motors.setSpeeds(200, -200);
       delay(330);
       motors.setSpeeds(0, 0);
@@ -107,6 +115,7 @@ void loop() {
       
       case 'b': case 'B': { /* If B is entered from the GUI/Serial, turn backwards 180 degrees */
       name= "180 degree turn";
+      Serial1.println("Turn 180 degrees \n"); /* Outputs to the GUI */
       motors.setSpeeds(200, -200);
       delay(660);
       motors.setSpeeds(0, 0);
@@ -128,6 +137,7 @@ void manualTurn() /* Function for task 3 */
       switch (direction){ /* Switch case from integer direction */
               
       case'a': case 'A': { /* If A is inputted from the GUI/Serial */
+        Serial1.println("Left turn \n"); /* Outputs to the GUI */
       name = "Left";
       motors.setSpeeds(-120, 120);
       delay(100);
@@ -136,6 +146,7 @@ void manualTurn() /* Function for task 3 */
       }
       
       case'd': case 'D': { /* If D is inputted from the GUI/Serial */
+        Serial1.println("Right turn \n"); /* Outputs to the GUI */
       name = "Right";
       motors.setSpeeds(120, -120);
       delay(100);
@@ -144,6 +155,7 @@ void manualTurn() /* Function for task 3 */
       }
       
       case'b': case 'B': { /* If B is inputted from the GUI/Serial */
+        Serial1.println("180 degree turn \n"); /* Outputs to the GUI */
       name = "180";
       motors.setSpeeds(200, -200); /* Speeds and delay set to a 180 degree turn angle */
       delay(660);
@@ -176,6 +188,7 @@ void autoTurn() /* Function for task 4 */
               
       case'l': case 'L': { /* If A is inputted from the GUI/Serial */
       name = "Left";
+      Serial1.println("Left 90 degrees \n"); /* Outputs to the GUI */
       motors.setSpeeds(-200, 200); /* Speeds and delay set to a 90 degree turn angle */
       delay(330);
       motors.setSpeeds(0, 0);
@@ -186,6 +199,7 @@ void autoTurn() /* Function for task 4 */
       
       case'r': case 'R': { /* If D is inputted from the GUI/Serial */
       name = "Right";
+      Serial1.println("Right 90 degrees \n"); /* Outputs to the GUI */
       motors.setSpeeds(200, -200); /* Speeds and delay set to a 90 degree turn angle */
       delay(330);
       motors.setSpeeds(0, 0);
@@ -196,6 +210,7 @@ void autoTurn() /* Function for task 4 */
       
       case'b': case 'B': { /* If B is inputted from the GUI/Serial */
       name = "180";
+      Serial1.println("180 degree turn \n"); /* Outputs to the GUI */
       motors.setSpeeds(200, -200); /* Speeds and delay set to a 180 degree turn angle */
       delay(660);
       motors.setSpeeds(0, 0);
@@ -344,6 +359,7 @@ void roomDirection() /* Beginning funcion for task 5 */
 
       case'l': case 'L': { /* If L is inputted from the GUI/Serial */
       name = "Left";
+      Serial1.println("Left 90 degrees \n"); /* Outputs to the GUI */
       motors.setSpeeds(-200, 200); /* Speeds and delay set to a 90 degree turn angle, then go forward */
       delay(330);
       motors.setSpeeds(90, 90);
@@ -355,6 +371,7 @@ void roomDirection() /* Beginning funcion for task 5 */
 
       case'r': case 'R': { /* If R is inputted from the GUI/Serial */
       name = "Right";
+      Serial1.println("Right 90 degrees \n"); /* Outputs to the GUI */
       motors.setSpeeds(200, -200); /* Speeds and delay set to a 90 degree turn angle, then go forward */
       delay(330);
       motors.setSpeeds(90, 90);

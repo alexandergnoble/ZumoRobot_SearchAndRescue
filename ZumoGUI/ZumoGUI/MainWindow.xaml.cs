@@ -27,17 +27,13 @@ namespace ZumoGUI
         public MainWindow()
         {
             InitializeComponent();
-            mySerialPort.Open();
-            mySerialPort.DtrEnable = true;
-            mySerialPort.Handshake = Handshake.None;
-            mySerialPort.Close();
-            
+
         }
         private void btnW_Click(object sender, RoutedEventArgs e) // If buttonW is clicked
         {
             mySerialPort.Open();
             mySerialPort.Write("W"); // Open the serial port, type W and close the port
-            txtOutput.Text = txtOutput.Text+ "Forward \n";
+            txtOutput.Text = txtOutput.Text + "Forward \n";
             mySerialPort.Close();
             txtOutput.ScrollToEnd();
 
@@ -47,6 +43,7 @@ namespace ZumoGUI
         {
             mySerialPort.Open();
             mySerialPort.Write("A"); // Open the serial port, type A and close the port
+            txtOutput.Text = txtOutput.Text + "Left turn \n";
             mySerialPort.Close();
             txtOutput.ScrollToEnd();
         }
@@ -55,6 +52,7 @@ namespace ZumoGUI
         {
             mySerialPort.Open();
             mySerialPort.Write("S"); // Open the serial port, type S and close the port
+            txtOutput.Text = txtOutput.Text + "Backwards \n";
             mySerialPort.Close();
             txtOutput.ScrollToEnd();
         }
@@ -63,6 +61,7 @@ namespace ZumoGUI
         {
             mySerialPort.Open();
             mySerialPort.Write("D"); // Open the serial port, type D and close the port
+            txtOutput.Text = txtOutput.Text + "Right turn \n";
             mySerialPort.Close();
             txtOutput.ScrollToEnd();
         }
@@ -71,6 +70,7 @@ namespace ZumoGUI
         {
             mySerialPort.Open();
             mySerialPort.Write("R"); // Open the serial port, type R and close the port
+            txtOutput.Text = txtOutput.Text + "Right 90 degrees \n";
             mySerialPort.Close();
             txtOutput.ScrollToEnd();
 
@@ -80,6 +80,7 @@ namespace ZumoGUI
         {
             mySerialPort.Open();
             mySerialPort.Write("L"); // Open the serial port, type L and close the port
+            txtOutput.Text = txtOutput.Text + "Left 90 degrees \n";
             mySerialPort.Close();
             txtOutput.ScrollToEnd();
 
@@ -88,6 +89,7 @@ namespace ZumoGUI
         {
             mySerialPort.Open();
             mySerialPort.Write("C"); // Open the serial port, type C and close the port
+            txtOutput.Text = txtOutput.Text + "Manual corridor scaling: Press C to resume at the end of a corridor. \n";
             mySerialPort.Close();
             txtOutput.ScrollToEnd();
         }
@@ -96,6 +98,7 @@ namespace ZumoGUI
         {
             mySerialPort.Open();
             mySerialPort.Write("X"); // Open the serial port, type X and close the port
+            txtOutput.Text = txtOutput.Text + "Auto corridor scaling: Press L or R (left or right turn) to resume at the end of a corridor. \n";
             mySerialPort.Close();
             txtOutput.ScrollToEnd();
         }
@@ -104,6 +107,7 @@ namespace ZumoGUI
         {
             mySerialPort.Open();
             mySerialPort.Write("Z"); // Open the serial port, type Z and close the port
+            txtOutput.Text = txtOutput.Text + "Room search: Press L or R (Left or right) to indicate which side the room is on. \n";
             mySerialPort.Close();
             txtOutput.ScrollToEnd();
         }
@@ -113,6 +117,7 @@ namespace ZumoGUI
             mySerialPort.Open();
             mySerialPort.Write("B"); // Open the serial port, type B and close the port
             mySerialPort.Close();
+            txtOutput.Text = txtOutput.Text + "Turn 180 degrees \n";
             txtOutput.ScrollToEnd();
 
         }
@@ -124,63 +129,78 @@ namespace ZumoGUI
 
             switch (input) //Switch case using string input
             {
-                case "w": case "W": //If input = W
-                mySerialPort.Open();
-                mySerialPort.Write("W");  // Open the serial port, type W and close the port
-                mySerialPort.Close();
-                txtInput.Text = String.Empty;
-                txtOutput.Text = txtOutput.Text + "Forward \n";
-                break;
-
-                case "a": case "A": //If input = A
+                case "w":
+                case "W": //If input = W
                     mySerialPort.Open();
-                mySerialPort.Write("A");  // Open the serial port, type A and close the port
-                mySerialPort.Close();
-                txtInput.Text = String.Empty;
-                break;
+                    mySerialPort.Write("W");  // Open the serial port, type W and close the port
+                    mySerialPort.Close();
+                    txtInput.Text = String.Empty;
+                    txtOutput.Text = txtOutput.Text + "Forward \n";
+                    break;
 
-                case "s": case "S": //If input = S
+                case "a":
+                case "A": //If input = A
                     mySerialPort.Open();
-                mySerialPort.Write("S"); // Open the serial port, type S and close the port
-                mySerialPort.Close();
-                txtInput.Text = String.Empty;
-                break;
+                    mySerialPort.Write("A");  // Open the serial port, type A and close the port
+                    mySerialPort.Close();
+                    txtInput.Text = String.Empty;
+                    txtOutput.Text = txtOutput.Text + "Left turn \n";
+                    break;
 
-                case "d": case "D": //If input = D
+                case "s":
+                case "S": //If input = S
                     mySerialPort.Open();
-                mySerialPort.Write("D"); // Open the serial port, type D and close the port
-                mySerialPort.Close();
-                txtInput.Text = String.Empty;
-                break;
+                    mySerialPort.Write("S"); // Open the serial port, type S and close the port
+                    mySerialPort.Close();
+                    txtOutput.Text = txtOutput.Text + "Backwards \n";
+                    txtInput.Text = String.Empty;
+                    break;
 
-                case "c": case "C": //If input = C
+                case "d":
+                case "D": //If input = D
                     mySerialPort.Open();
-                mySerialPort.Write("C"); // Open the serial port, type WCand close the port
-                mySerialPort.Close();
-                txtInput.Text = String.Empty;
-                break;
+                    mySerialPort.Write("D"); // Open the serial port, type D and close the port
+                    mySerialPort.Close();
+                    txtOutput.Text = txtOutput.Text + "Right turn \n";
+                    txtInput.Text = String.Empty;
+                    break;
 
-                case "l": case "L": //If input = L
+                case "c":
+                case "C": //If input = C
                     mySerialPort.Open();
-                mySerialPort.Write("L"); // Open the serial port, type L and close the port;
-                mySerialPort.Close();
-                txtInput.Text = String.Empty;
-                break;
+                    mySerialPort.Write("C"); // Open the serial port, type WCand close the port
+                    mySerialPort.Close();
+                    txtOutput.Text = txtOutput.Text + "Resuming! \n";
+                    txtInput.Text = String.Empty;
+                    break;
 
-                case "r": case "R": //If input = R
+                case "l":
+                case "L": //If input = L
                     mySerialPort.Open();
-                mySerialPort.Write("R"); // Open the serial port, type R and close the port
-                mySerialPort.Close();
-                txtInput.Text = String.Empty;
-                break;
+                    mySerialPort.Write("L"); // Open the serial port, type L and close the port;
+                    mySerialPort.Close();
+                    txtOutput.Text = txtOutput.Text + "90 degrees left \n";
+                    txtInput.Text = String.Empty;
+                    break;
 
-                case "b": case "B": //If input = B
+                case "r":
+                case "R": //If input = R
                     mySerialPort.Open();
-                mySerialPort.Write("B"); // Open the serial port, type B and close the port
-                mySerialPort.Close();
-                txtInput.Text = String.Empty;
-                break;
-            }         
+                    mySerialPort.Write("R"); // Open the serial port, type R and close the port
+                    mySerialPort.Close();
+                    txtOutput.Text = txtOutput.Text + "90 degrees right \n";
+                    txtInput.Text = String.Empty;
+                    break;
+
+                case "b":
+                case "B": //If input = B
+                    mySerialPort.Open();
+                    mySerialPort.Write("B"); // Open the serial port, type B and close the port
+                    txtOutput.Text = txtOutput.Text + "180 degree turn \n";
+                    mySerialPort.Close();
+                    txtInput.Text = String.Empty;
+                    break;
+            }
         }
 
 
